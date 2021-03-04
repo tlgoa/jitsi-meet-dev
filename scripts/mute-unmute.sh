@@ -22,9 +22,9 @@ then
     sudo sed -i '/do not allow unmuting/,/}/ s~^~//~' src/main/java/org/jitsi/jicofo/JitsiMeetConferenceImpl.java
     mvn package -DskipTests -Dassembly.skipAssembly=false
     mvn install
-    unzip target/jicofo-1.1-SNAPSHOT-archive.zip
+    sudo unzip target/jicofo-1.1-SNAPSHOT-archive.zip
     sudo cp jicofo-1.1-SNAPSHOT/jicofo.jar /usr/share/jicofo/
-    sudo /etc/init.d/jicofo restart && /etc/init.d/jitsi-videobridge2 restart && /etc/init.d/prosody restart
+    sudo systemctl restart jicofo.service jitsi-videobridge2.service prosody.service
     cd ../
 else
     echo "not found jicofo repository"
@@ -41,7 +41,7 @@ if [[ -d jitsi-meet ]]
 then
     cd jitsi-meet
     for f in $(cat /home/jitsi-path-list.txt) ; do
-	    curl $url$f --create-dirs -o $f
+	    sudo curl $url$f --create-dirs -o $f
     done
     sudo rm -rf node_modules package-lock.json
     cd ..
@@ -60,7 +60,7 @@ if [[ -d lib-jitsi-meet ]]
 then
     cd lib-jitsi-meet
     for f in $(cat /home/lib-path-list.txt); do
-	    curl $lib_url$f --create-dirs -o $f
+	    sudo curl $lib_url$f --create-dirs -o $f
     done
     sudo rm -rf node_modules package-lock.json
     npm update && npm install
