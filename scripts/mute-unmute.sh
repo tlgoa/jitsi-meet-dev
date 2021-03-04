@@ -8,7 +8,7 @@ echo "#####################################"
 echo "# developer-setup script is started #"
 echo "#####################################"
 echo
-curl "https://raw.githubusercontent.com/bayraktarulku/jitsi-meet-dev/master/scripts/developer-setup.sh" | bash
+curl "https://raw.githubusercontent.com/tlgoa/jitsi-meet-dev/master/scripts/developer-setup.sh" | bash
 
 echo
 echo "####################################"
