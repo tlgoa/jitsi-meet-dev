@@ -40,7 +40,7 @@ echo
 if [[ -d jitsi-meet ]]
 then
     cd jitsi-meet
-    for f in $(cat /home/jitsi-path-list.txt) ; do
+    for f in $(cat https://raw.githubusercontent.com/tlgoa/jitsi-meet-dev/master/scripts/jitsi-path-list.txt) ; do
 	    sudo curl $url$f --create-dirs -o $f
     done
     sudo rm -rf node_modules package-lock.json
@@ -59,7 +59,7 @@ echo
 if [[ -d lib-jitsi-meet ]]
 then
     cd lib-jitsi-meet
-    for f in $(cat /home/lib-path-list.txt); do
+    for f in $(cat https://raw.githubusercontent.com/tlgoa/jitsi-meet-dev/master/scripts/lib-path-list.txt); do
 	    sudo curl $lib_url$f --create-dirs -o $f
     done
     sudo rm -rf node_modules package-lock.json
