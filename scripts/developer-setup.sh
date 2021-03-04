@@ -34,7 +34,6 @@ echo "# JICOFO #"
 echo "################################"
 echo
 
-apt install -y maven
 if [[ -d jicofo ]]
 then
     cd jicofo
