@@ -19,12 +19,12 @@ echo
 if [[ -d jicofo ]]
 then
     cd jicofo
-    sed -i '/do not allow unmuting/,/}/ s~^~//~' src/main/java/org/jitsi/jicofo/JitsiMeetConferenceImpl.java
+    sudo sed -i '/do not allow unmuting/,/}/ s~^~//~' src/main/java/org/jitsi/jicofo/JitsiMeetConferenceImpl.java
     mvn package -DskipTests -Dassembly.skipAssembly=false
     mvn install
     unzip target/jicofo-1.1-SNAPSHOT-archive.zip
-    cp jicofo-1.1-SNAPSHOT/jicofo.jar /usr/share/jicofo/
-    /etc/init.d/jicofo restart && /etc/init.d/jitsi-videobridge2 restart && /etc/init.d/prosody restart
+    sudo cp jicofo-1.1-SNAPSHOT/jicofo.jar /usr/share/jicofo/
+    sudo /etc/init.d/jicofo restart && /etc/init.d/jitsi-videobridge2 restart && /etc/init.d/prosody restart
     cd ../
 else
     echo "not found jicofo repository"
@@ -43,7 +43,7 @@ then
     for f in $(cat /home/jitsi-path-list.txt) ; do
 	    curl $url$f --create-dirs -o $f
     done
-    rm -rf node_modules package-lock.json
+    sudo rm -rf node_modules package-lock.json
     cd ..
 else
     echo "not found jitsi-meet repository"
@@ -62,7 +62,7 @@ then
     for f in $(cat /home/lib-path-list.txt); do
 	    curl $lib_url$f --create-dirs -o $f
     done
-    rm -rf node_modules package-lock.json
+    sudo rm -rf node_modules package-lock.json
     npm update && npm install
     cd ..
 else
