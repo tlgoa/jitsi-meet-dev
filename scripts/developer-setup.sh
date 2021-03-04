@@ -39,8 +39,8 @@ then
     cd jicofo
     mvn package -DskipTests -Dassembly.skipAssembly=false
     mvn install
-    unzip target/jicofo-1.1-SNAPSHOT-archive.zip
-    cp jicofo-1.1-SNAPSHOT/jicofo.jar /usr/share/jicofo/
+    sudo unzip target/jicofo-1.1-SNAPSHOT-archive.zip
+    sudo cp jicofo-1.1-SNAPSHOT/jicofo.jar /usr/share/jicofo/
  
     /etc/init.d/jicofo restart && /etc/init.d/jitsi-videobridge2 restart && /etc/init.d/prosody restart
     cd ../
@@ -57,12 +57,12 @@ echo
 if [[ -d jitsi-meet ]]
 then
     cd jitsi-meet
-    rm -rf node_modules package-lock.json
+    sudo rm -rf node_modules package-lock.json
     github_url=`grep -i "lib-jitsi-meet" package.json`
     file_url="    \"lib-jitsi-meet\": \"file:../lib-jitsi-meet\","
     echo $github_url
     echo $file_url
-    sed -zi "s|$github_url|$file_url|g" package.json
+    sudo sed -zi "s|$github_url|$file_url|g" package.json
     cd ..
 else
     echo "not found jitsi-meet repository"
@@ -78,7 +78,7 @@ echo
 if [[ -d lib-jitsi-meet ]]
 then
     cd lib-jitsi-meet
-    rm -rf node_modules package-lock.json
+    sudo rm -rf node_modules package-lock.json
     npm update && npm install
     cd ..
 else
