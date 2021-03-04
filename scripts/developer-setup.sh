@@ -42,7 +42,7 @@ then
     sudo unzip target/jicofo-1.1-SNAPSHOT-archive.zip
     sudo cp jicofo-1.1-SNAPSHOT/jicofo.jar /usr/share/jicofo/
  
-    /etc/init.d/jicofo restart && /etc/init.d/jitsi-videobridge2 restart && /etc/init.d/prosody restart
+    sudo /etc/init.d/jicofo restart && /etc/init.d/jitsi-videobridge2 restart && /etc/init.d/prosody restart
     cd ../
 else
     echo "not found jicofo repository"
